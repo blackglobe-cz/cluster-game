@@ -4,16 +4,17 @@ import {DataTypes, Model, Sequelize} from 'sequelize'
 export class Character extends Model<InferAttributes<Character>, InferCreationAttributes<Character>> {
     declare id: CreationOptional<string>
     declare name: string
-    declare level: number
+    declare level: CreationOptional<number>
     declare gender: string
     declare externalAccountId: string
 
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
+    declare deletedAt: CreationOptional<Date>;
 
-    static associate = (models: any): void => {
+    // static associate = (_models: any): void => {
 
-    }
+    // }
 }
 
 export const createModel = (sequelize: Sequelize) => {
@@ -30,7 +31,8 @@ export const createModel = (sequelize: Sequelize) => {
         gender: DataTypes.STRING,
         externalAccountId: DataTypes.STRING,
         createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE
+        updatedAt: DataTypes.DATE,
+        deletedAt: DataTypes.DATE
     }, {
         sequelize
     })

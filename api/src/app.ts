@@ -10,7 +10,16 @@ const __dirname = path.dirname(__filename)
 import Logger from './modules/Logger.js'
 import {ModelManager} from './modules/ModelManager.js'
 
-export type AppRequest = Request & { session?: validation.RequestSessionAudit<string>, token?: string }
+export interface PostRequest<Payload = { [key: string]: any }> extends AppRequest {
+    validatedBody: Payload,
+    session: validation.RequestSessionAudit<string>,
+}
+
+export interface AppRequest extends Request {
+    session?: validation.RequestSessionAudit<string>,
+    token?: string
+}
+
 export type AppResponse = Response
 
 const app = express()
