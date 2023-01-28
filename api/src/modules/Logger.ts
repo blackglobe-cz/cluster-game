@@ -25,4 +25,4 @@ const createRollbarTransport = () =>
 
 config.rollbar.enable && logger.addCustomTransport(createRollbarTransport)
 
-export default logger
+export {logger as Logger}

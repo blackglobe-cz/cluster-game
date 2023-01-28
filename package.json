@@ -14,7 +14,7 @@
     "db:migrate:ts": "node --loader ts-node/esm ./db/index.js schema"
   },
   "dependencies": {
-    "@blackglobe-cz/app-utils": "^3.1.4",
+    "@blackglobe-cz/app-utils": "^3.1.5",
     "@types/pg": "^8.6.6",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

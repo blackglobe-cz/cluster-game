@@ -8,6 +8,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
+  "files": [
+    "./custom/express.d.ts"
+  ],
   "include": [
     "api",
     "db",

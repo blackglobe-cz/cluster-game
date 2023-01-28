@@ -15,7 +15,7 @@ export type Configuration = {
 export class ModelManager {
 
     private logger: winston.Logger
-    private sequelize: Sequelize
+    private readonly sequelize: Sequelize
     static Instance: ModelManager
 
     private constructor(logger: winston.Logger, sequelize: Sequelize) {

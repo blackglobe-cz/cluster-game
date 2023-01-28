@@ -1,26 +1,14 @@
+import config from "./config.js";
 import path from 'path'
-import express, {Request, Response} from 'express'
+import express from 'express'
 import {fileURLToPath} from 'url'
-import {CustomEmitter, resources, validation} from '@blackglobe-cz/app-utils'
 
-import config from './config.js'
+import {Logger} from './modules/Logger.js'
+import {loadResources} from "./resources/index.js";
+import {ModelManager} from "./modules/ModelManager.js";
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-import Logger from './modules/Logger.js'
-import {ModelManager} from './modules/ModelManager.js'
-
-export interface PostRequest<Payload = { [key: string]: any }> extends AppRequest {
-    validatedBody: Payload,
-    session: validation.RequestSessionAudit<string>,
-}
-
-export interface AppRequest extends Request {
-    session?: validation.RequestSessionAudit<string>,
-    token?: string
-}
-
-export type AppResponse = Response
 
 const app = express()
 
@@ -29,7 +17,7 @@ app.use(express.urlencoded({extended: false}))
 
 await ModelManager.init(config.database, Logger.getLogger('Database'), [path.join(__dirname, 'resources')])
 
-await resources.loadResources(app, Logger.getLogger('resources'), new CustomEmitter(Logger.getLogger('events')), '/api', `${__dirname}/resources`)
+await loadResources(app)
 
 export {
     app

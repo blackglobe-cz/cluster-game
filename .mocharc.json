@@ -1,0 +1,9 @@
+{
+  "require": "ts-node/register/transpile-only",
+  "loader": "ts-node/esm",
+  "extensions": [
+    "ts",
+    "tsx"
+  ],
+  "ui": "bdd"
+}

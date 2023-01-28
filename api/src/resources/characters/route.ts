@@ -7,7 +7,7 @@ import {policy} from "../../modules/Policy.js";
 
 const router = Router();
 
-const base = '/status';
+const base = '/character';
 
 router.post(
     base,
